@@ -30,26 +30,26 @@
   color: rgb(248, 248, 248);
 }
 
-.button_good:hover,
-.button_good:focus {
+.good:hover,
+.good:focus {
   background-color: rgb(111, 214, 111);
   color: rgb(248, 248, 248);
 }
 
-.button_neutral,
-.button_good,
-.button_bad {
+.neutral,
+.good,
+.bad {
   background-color: rgb(218, 219, 218);
   color: rgb(59, 59, 59);
 }
 
-.button_neutral:hover,
-.button_neutral:focus {
+.neutral:hover,
+.neutral:focus {
   background-color: rgb(241, 241, 241);
 }
 
-.button_bad:hover,
-.button_bad:focus {
+.bad:hover,
+.bad:focus {
   background-color: rgb(236, 104, 42);
   color: rgb(248, 248, 248);
 }
