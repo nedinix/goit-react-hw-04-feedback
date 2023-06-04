@@ -2,6 +2,7 @@ import FeedbackOptions from 'components/FeedbackOptions/FeedbackOptions';
 import Statistics from 'components/Statistics/Statistics';
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import css from './feedback.module.css';
 
 export class Feedback extends Component {
   state = {
@@ -61,7 +62,7 @@ export class Feedback extends Component {
 
   render() {
     return (
-      <div>
+      <div className={css.container}>
         <FeedbackOptions
           stateGood={this.onCountStateGood}
           stateNeutral={this.onCountStateNeutral}
