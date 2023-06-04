@@ -1,5 +1,5 @@
 import React from 'react';
-import NotificationMessage from 'components/Feedback/NotificationMessage/NotificationMessage';
+import NotificationMessage from '../NotificationMessage';
 import css from './Statistics.module.css';
 import PropTypes from 'prop-types';
 
