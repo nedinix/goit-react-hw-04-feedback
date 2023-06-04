@@ -20,25 +20,31 @@ export class Feedback extends Component {
     ),
   };
 
-  onCountStateGood = () => {
-    this.setState(prevState => ({
-      good: prevState.good + 1,
-    }));
-    this.onCountTotalFeedback();
-  };
+  // onCountStateGood = () => {
+  //   this.setState(prevState => ({
+  //     good: prevState.good + 1,
+  //   }));
+  //   this.onCountTotalFeedback();
+  // };
 
-  onCountStateNeutral = () => {
-    this.setState(prevState => ({
-      neutral: prevState.neutral + 1,
-    }));
-    this.onCountTotalFeedback();
-  };
+  // onCountStateNeutral = () => {
+  //   this.setState(prevState => ({
+  //     neutral: prevState.neutral + 1,
+  //   }));
+  //   this.onCountTotalFeedback();
+  // };
 
-  onCountStateBad = () => {
+  // onCountStateBad = () => {
+  //   this.setState(prevState => ({
+  //     bad: prevState.bad + 1,
+  //   }));
+  //   this.onCountTotalFeedback();
+  // };
+  onLeaveFeedback = e => {
+    const { stateName } = e.currentTarget;
     this.setState(prevState => ({
-      bad: prevState.bad + 1,
+      [stateName]: prevState[stateName] + 1,
     }));
-    this.onCountTotalFeedback();
   };
 
   onCountTotalFeedback = () => {
@@ -51,7 +57,6 @@ export class Feedback extends Component {
         ),
       };
     });
-    this.onCountPositiveFeedbackPercentage();
   };
 
   onCountPositiveFeedbackPercentage = () =>
@@ -61,9 +66,11 @@ export class Feedback extends Component {
     return (
       <div className="container">
         <FeedbackOptions
-          stateGood={this.onCountStateGood}
-          stateNeutral={this.onCountStateNeutral}
-          stateBad={this.onCountStateBad}
+          // stateGood={this.onCountStateGood}
+          // stateNeutral={this.onCountStateNeutral}
+          // stateBad={this.onCountStateBad}
+          options={this.state}
+          onLeaveFeedback={this.onLeaveFeedback}
         />
         <Statistics
           good={this.state.good}
