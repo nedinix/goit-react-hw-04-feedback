@@ -1,5 +1,5 @@
-import FeedbackOptions from 'components/Feedback/FeedbackOptions/FeedbackOptions';
-import Statistics from 'components/Feedback/Statistics/Statistics';
+import FeedbackOptions from 'components/Feedback/FeedbackOptions';
+import Statistics from 'components/Feedback/Statistics';
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 
@@ -34,6 +34,7 @@ export class Feedback extends Component {
     Math.round((this.state.good / this.onCountTotalFeedback()) * 100);
 
   render() {
+    const { good, neutral, bad } = this.state;
     return (
       <div className="container">
         <FeedbackOptions
@@ -41,9 +42,9 @@ export class Feedback extends Component {
           onLeaveFeedback={this.onLeaveFeedback}
         />
         <Statistics
-          good={this.state.good}
-          neutral={this.state.neutral}
-          bad={this.state.bad}
+          good={good}
+          neutral={neutral}
+          bad={bad}
           total={this.onCountTotalFeedback()}
           positivePercentage={this.onCountPositiveFeedbackPercentage()}
         />
