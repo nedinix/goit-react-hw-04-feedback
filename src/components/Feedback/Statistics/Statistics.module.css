@@ -11,15 +11,15 @@
   margin-bottom: 20px;
 }
 
-.statistics_item_good {
+.good {
   color: rgb(142, 201, 142);
 }
 
-.statistics_item_neutral {
+.neutral {
   color: rgb(156, 156, 156);
 }
 
-.statistics_item_bad {
+.bad {
   margin-bottom: 20px;
   color: rgb(221, 161, 112);
 }

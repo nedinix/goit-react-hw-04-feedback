@@ -20,55 +20,23 @@ export class Feedback extends Component {
     ),
   };
 
-  // onCountStateGood = () => {
-  //   this.setState(prevState => ({
-  //     good: prevState.good + 1,
-  //   }));
-  //   this.onCountTotalFeedback();
-  // };
-
-  // onCountStateNeutral = () => {
-  //   this.setState(prevState => ({
-  //     neutral: prevState.neutral + 1,
-  //   }));
-  //   this.onCountTotalFeedback();
-  // };
-
-  // onCountStateBad = () => {
-  //   this.setState(prevState => ({
-  //     bad: prevState.bad + 1,
-  //   }));
-  //   this.onCountTotalFeedback();
-  // };
   onLeaveFeedback = e => {
-    const { stateName } = e.currentTarget;
+    const stateName = e.currentTarget.name;
     this.setState(prevState => ({
       [stateName]: prevState[stateName] + 1,
     }));
   };
 
-  onCountTotalFeedback = () => {
-    this.setState(prevState => {
-      const { good, neutral, bad } = prevState;
-      return {
-        total: Object.values({ good, neutral, bad }).reduce(
-          (acc, value) => acc + value,
-          0
-        ),
-      };
-    });
-  };
+  onCountTotalFeedback = () =>
+    Object.values(this.state).reduce((acc, value) => acc + value, 0);
 
   onCountPositiveFeedbackPercentage = () =>
-    Math.round((this.state.good / this.state.total) * 100);
+    Math.round((this.state.good / this.onCountTotalFeedback()) * 100);
 
   render() {
     return (
       <div className="container">
         <FeedbackOptions
-          // stateGood={this.onCountStateGood}
-          // stateNeutral={this.onCountStateNeutral}
-          // stateBad={this.onCountStateBad}
           options={this.state}
           onLeaveFeedback={this.onLeaveFeedback}
         />
@@ -76,7 +44,7 @@ export class Feedback extends Component {
           good={this.state.good}
           neutral={this.state.neutral}
           bad={this.state.bad}
-          total={this.state.total}
+          total={this.onCountTotalFeedback()}
           positivePercentage={this.onCountPositiveFeedbackPercentage()}
         />
       </div>
