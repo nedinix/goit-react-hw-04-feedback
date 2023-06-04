@@ -70,7 +70,7 @@ export class Feedback extends Component {
           neutral={this.state.neutral}
           bad={this.state.bad}
           total={this.state.total}
-          positivePercentage={this.state.positivePercentage}
+          positivePercentage={this.onCountPositiveFeedbackPercentage()}
         />
       </div>
     );
