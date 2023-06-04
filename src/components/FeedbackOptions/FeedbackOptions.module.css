@@ -1,6 +1,7 @@
 .feedback_options_list {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .feedback_options button:not(:last-child) {
