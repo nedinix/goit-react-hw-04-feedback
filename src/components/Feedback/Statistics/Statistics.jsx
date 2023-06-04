@@ -6,9 +6,7 @@ import PropTypes from 'prop-types';
 const Statistics = ({ good, neutral, bad, total, positivePercentage }) => (
   <div className={css.statistics}>
     <h3>Statistics</h3>
-    {!total ? (
-      <NotificationMessage message={'There is no feedback'} />
-    ) : (
+    {total ? (
       <ul>
         <li>
           <span className={css.statistics_item_good}>Good: {good}</span>
@@ -30,6 +28,8 @@ const Statistics = ({ good, neutral, bad, total, positivePercentage }) => (
           <span>Positive feedback: {`${positivePercentage}%`}</span>
         </li>
       </ul>
+    ) : (
+      <NotificationMessage message={'There is no feedback'} />
     )}
   </div>
 );
