@@ -18,7 +18,7 @@ export const StyledFeedbackButton = styled.button`
   border-style: none;
   border-radius: 4px;
 
-  transition: box-shadow 150ms linear, background-color 10s0ms linear,
+  transition: box-shadow 150ms linear, background-color 100ms linear,
     color 100ms linear;
 
   &:not(:last-child) {
