@@ -1,5 +1,6 @@
 import FeedbackOptions from './FeedbackOptions';
 import Statistics from './Statistics';
+import { Container } from './App.styled';
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 
@@ -11,19 +12,14 @@ class App extends Component {
   };
 
   static propTypes = {
-    state: PropTypes.arrayOf(
-      PropTypes.exact({
-        good: PropTypes.number,
-        neutral: PropTypes.number,
-        bad: PropTypes.number,
-      })
-    ),
+    good: PropTypes.number,
+    neutral: PropTypes.number,
+    bad: PropTypes.number,
   };
 
-  onLeaveFeedback = e => {
-    const stateName = e.currentTarget.name;
+  onLeaveFeedback = name => {
     this.setState(prevState => ({
-      [stateName]: prevState[stateName] + 1,
+      [name]: prevState[name] + 1,
     }));
   };
 
@@ -35,10 +31,12 @@ class App extends Component {
 
   render() {
     const { good, neutral, bad } = this.state;
+    const options = Object.keys(this.state);
+
     return (
-      <div className="container">
+      <Container>
         <FeedbackOptions
-          options={this.state}
+          options={options}
           onLeaveFeedback={this.onLeaveFeedback}
         />
         <Statistics
@@ -48,7 +46,7 @@ class App extends Component {
           total={this.onCountTotalFeedback()}
           positivePercentage={this.onCountPositiveFeedbackPercentage()}
         />
-      </div>
+      </Container>
     );
   }
 }

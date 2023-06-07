@@ -1,21 +1,27 @@
 import React from 'react';
 import NotificationMessage from '../NotificationMessage';
-import css from './Statistics.module.css';
+// import css from './Statistics.module.css';
 import PropTypes from 'prop-types';
+import {
+  StyledStatisticsList,
+  StyledGoodStat,
+  StyledNeutralStat,
+  StyledBadStat,
+} from './Statistics.styled';
 
 const Statistics = ({ good, neutral, bad, total, positivePercentage }) => (
-  <div className={css.statistics}>
+  <div>
     <h3>Statistics</h3>
     {total ? (
-      <ul>
+      <StyledStatisticsList>
         <li>
-          <span className={css.good}>Good: {good}</span>
+          <StyledGoodStat>Good: {good}</StyledGoodStat>
         </li>
         <li>
-          <span className={css.neutral}>Neutral: {neutral}</span>
+          <StyledNeutralStat>Neutral: {neutral}</StyledNeutralStat>
         </li>
         <li>
-          <span className={css.bad}>Bad: {bad}</span>
+          <StyledBadStat>Bad: {bad}</StyledBadStat>
         </li>
 
         <li>
@@ -25,7 +31,7 @@ const Statistics = ({ good, neutral, bad, total, positivePercentage }) => (
         <li>
           <span>Positive feedback: {`${positivePercentage}%`}</span>
         </li>
-      </ul>
+      </StyledStatisticsList>
     ) : (
       <NotificationMessage message={'There is no feedback'} />
     )}
