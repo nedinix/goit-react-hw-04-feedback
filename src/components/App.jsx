@@ -1,54 +1,52 @@
 import FeedbackOptions from './FeedbackOptions';
 import Statistics from './Statistics';
 import { Container } from './App.styled';
-import { Component } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-class App extends Component {
-  state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
+const App = () => {
+  const [good, setGood] = useState(0);
+  const [neutral, setNeutral] = useState(0);
+  const [bad, setBad] = useState(0);
+
+  const options = ['good', 'neutral', 'bad'];
+  const total = good + neutral + bad;
+  const positiveFeedbackPercentage = Math.round((good / total) * 100);
+
+  const onLeaveFeedback = name => {
+    switch (name) {
+      case 'good':
+        setGood(good => good + 1);
+        break;
+      case 'neutral':
+        setNeutral(neutral => neutral + 1);
+        break;
+      case 'bad':
+        setBad(bad => bad + 1);
+        break;
+      default:
+        break;
+    }
   };
 
-  static propTypes = {
-    good: PropTypes.number,
-    neutral: PropTypes.number,
-    bad: PropTypes.number,
-  };
+  return (
+    <Container>
+      <FeedbackOptions options={options} onLeaveFeedback={onLeaveFeedback} />
+      <Statistics
+        good={good}
+        neutral={neutral}
+        bad={bad}
+        total={total}
+        positivePercentage={positiveFeedbackPercentage}
+      />
+    </Container>
+  );
+};
 
-  onLeaveFeedback = name => {
-    this.setState(prevState => ({
-      [name]: prevState[name] + 1,
-    }));
-  };
-
-  onCountTotalFeedback = () =>
-    Object.values(this.state).reduce((acc, value) => acc + value, 0);
-
-  onCountPositiveFeedbackPercentage = () =>
-    Math.round((this.state.good / this.onCountTotalFeedback()) * 100);
-
-  render() {
-    const { good, neutral, bad } = this.state;
-    const options = Object.keys(this.state);
-
-    return (
-      <Container>
-        <FeedbackOptions
-          options={options}
-          onLeaveFeedback={this.onLeaveFeedback}
-        />
-        <Statistics
-          good={good}
-          neutral={neutral}
-          bad={bad}
-          total={this.onCountTotalFeedback()}
-          positivePercentage={this.onCountPositiveFeedbackPercentage()}
-        />
-      </Container>
-    );
-  }
-}
+App.propTypes = {
+  good: PropTypes.number,
+  neutral: PropTypes.number,
+  bad: PropTypes.number,
+};
 
 export default App;

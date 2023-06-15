@@ -10,9 +10,9 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
     <div>
       <h3>Please leave Feedback</h3>
       <StyledFeedbackOptionsList>
-        {options.map((option, index) => (
+        {options.map(option => (
           <StyledFeedbackButton
-            key={index}
+            key={option}
             colorState={option}
             name={option}
             type="button"

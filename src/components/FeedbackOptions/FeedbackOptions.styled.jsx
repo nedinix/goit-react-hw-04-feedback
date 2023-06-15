@@ -30,11 +30,6 @@ export const StyledFeedbackButton = styled.button`
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   }
 
-  &:active {
-    background-color: rgb(59, 59, 59);
-    color: rgb(248, 248, 248);
-  }
-
   ${props => {
     switch (props.colorState) {
       case 'good':
@@ -62,4 +57,9 @@ export const StyledFeedbackButton = styled.button`
         `;
     }
   }}
+
+  &:active {
+    background-color: rgb(59, 59, 59);
+    color: rgb(248, 248, 248);
+  }
 `;

@@ -1,13 +1,7 @@
 import React from 'react';
 import NotificationMessage from '../NotificationMessage';
-// import css from './Statistics.module.css';
 import PropTypes from 'prop-types';
-import {
-  StyledStatisticsList,
-  StyledGoodStat,
-  StyledNeutralStat,
-  StyledBadStat,
-} from './Statistics.styled';
+import { StyledStatisticsList, StyledStatItem } from './Statistics.styled';
 
 const Statistics = ({ good, neutral, bad, total, positivePercentage }) => (
   <div>
@@ -15,13 +9,15 @@ const Statistics = ({ good, neutral, bad, total, positivePercentage }) => (
     {total ? (
       <StyledStatisticsList>
         <li>
-          <StyledGoodStat>Good: {good}</StyledGoodStat>
+          <StyledStatItem colorState={'good'}>Good: {good}</StyledStatItem>
         </li>
         <li>
-          <StyledNeutralStat>Neutral: {neutral}</StyledNeutralStat>
+          <StyledStatItem colorState={'neutral'}>
+            Neutral: {neutral}
+          </StyledStatItem>
         </li>
         <li>
-          <StyledBadStat>Bad: {bad}</StyledBadStat>
+          <StyledStatItem colorState={'bad'}>Bad: {bad}</StyledStatItem>
         </li>
 
         <li>

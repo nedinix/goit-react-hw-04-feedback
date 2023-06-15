@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 
 export const StyledStatisticsList = styled.ul`
   list-style-type: none;
@@ -13,14 +14,25 @@ export const StyledStatisticsList = styled.ul`
   }
 `;
 
-export const StyledGoodStat = styled.span`
-  color: rgb(142, 201, 142);
-`;
+export const StyledStatItem = styled.span`
+  &:last-child {
+    margin-bottom: 20px;
+  }
 
-export const StyledNeutralStat = styled.span`
-  color: rgb(156, 156, 156);
-`;
-export const StyledBadStat = styled.span`
-  margin-bottom: 20px;
-  color: rgb(221, 161, 112);
+  ${props => {
+    switch (props.colorState) {
+      case 'good':
+        return css`
+          color: rgb(142, 201, 142);
+        `;
+      case 'bad':
+        return css`
+          color: rgb(221, 161, 112);
+        `;
+      default:
+        return css`
+          color: rgb(156, 156, 156);
+        `;
+    }
+  }}
 `;
